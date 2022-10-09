@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<script>
+function KursiValyut () {
+var url = "https://www.cbr-xml-daily.ru/daily_json.js";
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url,false);
+xhr.send ();
+var result = xhr.responseText;
+var money = JSON.parse (result);
+var out = money.Valute.USD.CharCode + ": " + money.Valute.USD.Value + " "
++ money.Valute.EUR.CharCode + ": " + money.Valute.EUR.Value + " "
++ money.Valute.AZN.CharCode + ": " + money.Valute.AZN.Value ;
+console.log (out);
+document.getElementById("rates").innerHTML = out;
+}
+</script>
+</head>
+<body onload = "KursiValyut ();">
+<div id = "rates"> </div>
+
+<h1>Курсы валют</h1>
+
+</body>
+</html>
