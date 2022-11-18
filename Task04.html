@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>калькулятор</title>
+    <style>
+        input, button {
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 120px;
+            text-align: center;
+        }
+
+        input#txtZ {
+            width: 120px;
+            text-align: center;
+            
+        }
+
+        
+        
+        button {
+            width: 62px;
+            transform: scale(90%);
+            
+        }
+
+        button:hover{
+            transform: scale(100%);
+            background-color: rgb(192, 189, 189);
+            
+        }
+
+
+        .pressedPlus {
+            background-color: rgb(47, 162, 47);
+            transition-property: transform;
+            transition-duration: 1s;
+            transform: scale(110%);            
+        }
+
+        .pressedMinus {
+            background-color: rgb(255, 0, 0);
+            transition-property: transform;
+            transition-duration: 1s;
+            transform: scale(110%);
+            color: aliceblue;            
+        }
+
+
+        .resultPositive {
+            background-color: rgb(47, 162, 47);
+                                 
+        }
+
+        .resultNegative {
+            background-color: rgb(255, 0, 0);
+            color: aliceblue;
+                                  
+        }
+
+        .resultNeutral {
+            background-color: rgb(255, 230, 0);
+                                  
+        }
+
+
+        
+
+    </style>
+    <script>
+        function plus() {
+            var x = parseInt(document.getElementById("txtX").value);
+            var y = parseInt(document.getElementById("txtY").value);
+            var z = x + y;
+            
+            if (z>0){
+                document.getElementById("txtZ").className = "resultPositive";
+            }
+
+            if (z<0){
+                document.getElementById("txtZ").className = "resultNegative";
+            }
+
+            if (z==0){
+                document.getElementById("txtZ").className = "resultNeutral";
+            }
+
+
+
+            document.getElementById("txtZ").value = z;
+            document.getElementById("btnPlus").className = "pressedPlus";
+            document.getElementById("btnMinus").className = "";
+          
+        }
+
+        function minus() {
+            var x = parseInt(document.getElementById("txtX").value);
+            var y = parseInt(document.getElementById("txtY").value);
+            var z = x - y;
+            
+            if (z>0){
+                document.getElementById("txtZ").className = "resultPositive";
+            }
+
+            if (z<0){
+                document.getElementById("txtZ").className = "resultNegative";
+            }
+
+            if (z==0){
+                document.getElementById("txtZ").className = "resultNeutral";
+            }
+
+            document.getElementById("txtZ").value = z;
+            document.getElementById("btnMinus").className = "pressedMinus";
+            document.getElementById("btnPlus").className = "";
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Калькулятор на чистом JS</h1>
+    <input type="text" id="txtX" value="0" /> <br />
+    <input type="text" id="txtY" value="0" /> <br />
+    <button id="btnPlus" onclick="plus();">+</button>
+    <button id="btnMinus" onclick="minus();">-</button> <br />
+    <input type="text" id="txtZ" value="0" /> 
+</body>
+</html>
